@@ -11,6 +11,7 @@
       * BDD documentation -- is integrated with -- source control system 
 * [Cucumber School](https://cucumber.io/school/)
   * == training + tutorials
+    * much of them are free
 * [Cucumber for Jira](https://cucumber.io/tools/cucumber-for-jira/)
   * allows
     * integrating automated tests / feature file tracked in Jira
