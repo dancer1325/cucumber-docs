@@ -70,25 +70,6 @@ weight: 1
     ```
     
     {{% /block %}}
-    
-    {{% block "kotlin" %}}
-    
-    ```kotlin
-    package com.example
-    import io.cucumber.java8.En
-    
-    class StepDefinitions : En {
-    
-        init {
-            Given("I have {int} cukes in my belly") { cukes: Int ->
-                    println("Cukes: $cukes")
-            }
-        }
-    
-    }
-    ```
-    
-    {{% /block %}}
 
     {{% block "scala" %}}
     
