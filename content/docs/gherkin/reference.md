@@ -130,36 +130,28 @@ Gherkin is localised for many [spoken languages](#spoken-languages); each has th
 
 ## Feature
 
-The purpose of the `Feature` keyword is to provide a high-level description
-of a software feature, and to group related scenarios.
-
-The first primary keyword in a Gherkin document must always be `Feature`, followed
-by a `:` and a short text that describes the feature.
-
-You can add free-form text underneath `Feature` to add more description.
-
-These description lines are ignored by Cucumber at runtime, but are available for reporting (they are included by reporting tools like the official HTML formatter).
+* `Feature: ShortTextToDescribeTheFeature`
+* == high-level description of a software feature /
+  * description -- could detail --
+    * brief explanation
+    * general acceptance criteria
+  * group related scenarios
+  * 👁️ first primary keyword | Gherkin document 👁️
+  * free-form text underneath | new line, can be added
+    * -- ignored by -- Cucumber | runtime
+    * -- available for -- reporting 
+    * ends | starting a line with a keyword
+* 1! feature / `.feature`
 
 ```gherkin
 Feature: Guess the word
-
+  # next lines are "free-form text underneath" / NOT need to start with a keyword
   The word guess game is a turn-based game for two players.
   The Maker makes a word for the Breaker to guess. The game
   is over when the Breaker guesses the Maker's word.
-
+  # Here ends the "free-form text underneath", because the next line starts with a keyword
   Example: Maker starts a game
 ```
-
-The name and the optional description have no special meaning to Cucumber. Their purpose is to provide
-a place for you to document important aspects of the feature, such as a brief explanation
-and a list of business rules (general acceptance criteria).
-
-The free format description for `Feature` ends when you start a line with the keyword `Background`, `Rule`, `Example` or `Scenario Outline` (or their alias keywords).
-
-You can place [tags](/docs/cucumber/api/#tags) above `Feature` to group related features,
-independent of your file and directory structure.
-
-You can only have a single `Feature` in a `.feature` file.
 
 ## Descriptions
 
