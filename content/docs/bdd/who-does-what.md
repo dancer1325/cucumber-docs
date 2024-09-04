@@ -3,31 +3,32 @@ title: Who Does What?
 subtitle: Roles and responsibilities in a BDD team
 ---
 
-Who should be writing [Gherkin](/docs/gherkin/) documents, and who should write
-[step definitions](/docs/cucumber/step-definitions)?
-
-Product owners, business analysts, programmers and testers are often confused
-about who should take on what responsibilities.
-
-The answer depends on several factors, such as team structure, skills, culture,
-process and more.
+* Who should be writing [Gherkin](/docs/gherkin/) documents & [step definitions](/docs/cucumber/step-definitions)?
+  * -- depends on --
+    * team structure,
+    * skills,
+    * culture,
+    * ...
 
 # The Three Amigos
 
-*The Three Amigos* is a meeting that takes user stories and turns them into clean, thorough Gherkin scenarios. It involves three voices (at least):
-
-- **The product owner** - This person is most concerned with the scope of the application. This involves translating user stories into a series of features. As the tester comes up with edge cases, the product owner is responsible for deciding what is within scope.
-- **The tester** - This person will be generating lots of Scenarios, and lots of edge cases. How will the application break? What user stories have we not accounted for within these Features?
-- **The developer** - This person will add many of the Steps to the Scenarios, and think of the details that go into each requirement. How will this application execute? What are some of the roadblocks or requirements behind the scenes?
-
-These conversations can produce great tests, because each amigo sees
-the product from a different perspective. For this reason it is *essential* that all of these roles have conversations to discover examples *together*.
-[Example Mapping](/docs/bdd/example-mapping) and Event Storming are great collaborative analysis techniques for discovering examples.
-
-Finally, there is no reason to limit these meetings to three people—or to hold only one such meeting at the beginning of the project. Continually refine your features and collaborate with everyone to best understand how to talk about, develop, and test your application.
+* := meeting /
+  * user stories -- are turned into, via Gherkin scenarios, -- cleaned oned
+  * intervene
+    * **The product owner**
+      * -- responsible for -- deciding scoping
+    * **The tester**
+      * -- responsible for -- generating
+        * Scenarios,
+        * edge cases
+    * **The developer**
+      * -- responsible for --
+        * adding Steps to the Scenarios
+        * thinking of the details / each requirement
 
 # Writing Gherkin
 
+* TODO:
 To start with, when the language and style used in the scenarios
 is still being established, it is recommended that the entire team collaborate on writing the Gherkin.
 Later, it can be efficiently done by a pair: a developer (or someone who is responsible for the
