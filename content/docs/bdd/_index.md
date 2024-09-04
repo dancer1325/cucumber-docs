@@ -52,25 +52,17 @@ iconClass: far fa-comments
 
 ## Discovery: What it _could_ do
 
-* TODO:
-> The hardest single part of building a software system is deciding precisely what to build.
->
-> -- <cite>Fred Brooks, The mythical man-month</cite>
-
-Although documentation and automated tests are produced by a BDD team, you can think of them as nice side-effects. The real goal is valuable, working software, and the fastest way to get there is through conversations between the people who are involved in imagining and delivering that software.
-
-BDD helps teams to have the right conversations at the right time so you minimise the amount of time spent in meetings and maximising the amount of valuable code you produce.
-
-We use structured conversations, called [discovery workshops], that focus around real-world examples of the system from the users' perspective. These conversations grow our team's shared understanding of the needs of our users, of the rules that govern how the system should function, and of the scope of what needs to be done.
-
-It may also reveal gaps in our understanding, where we need more information before we know what to do.
-
-The scrutiny of a discovery session often reveals low-priority functionality that can be deferred from the scope of a user story, helping the team to work in smaller increments, improving their flow.
-
-If you're new to BDD, discovery is the right place to start. You won't get much joy from the other two practices until you've mastered discovery.
+* allows
+  * minimising time spent in meetings
+  * maximising the valuable code / you produce
+  * following structured conversations -- [discovery workshops] -- 
+    * revealing
+      * gaps in our understanding
+      * low-priority functionality
 
 ## Formulation: What it _should_ do
 
+* TODO:
 As soon as we have identified at least one valuable example from our discovery sessions, we can now formulate each example as structured documentation. This gives us a quick way to confirm that we really do have a shared understanding of what to build.
 
 In contrast to traditional documentation, we use [a medium that can be read by both humans and computers](../gherkin), so that:
