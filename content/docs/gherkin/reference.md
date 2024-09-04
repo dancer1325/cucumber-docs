@@ -2,25 +2,39 @@
 title: Gherkin Reference
 subtitle: "Cucumber syntax: Given, When, Then"
 ---
-Gherkin uses a set of special [keywords](#keywords) to give structure and meaning to
-executable specifications. Each keyword is translated to many spoken languages;
-in this reference we'll use English.
 
-Most lines in a Gherkin document start with one of the [keywords](#keywords).
-
-Comments are only permitted at the start of a new line, anywhere in the feature file. They begin with zero or more spaces,
-followed by a hash sign (`#`) and some text.
-
-Block comments are currently not supported by Gherkin.
-
-Either spaces or tabs may be used for indentation. The recommended indentation
-level is two spaces. Here is an example:
+* Gherkin
+  * special [keywords](#keywords) /
+    * give structure and meaning / executable specifications
+    * -- are translated to -- many spoken languages
+    * most lines | Gherkin document -- start with -- one of the [keywords](#keywords)
+    * 👁️SOME keywords need `:` 👁️
+      * ⚠️if you add a `:` | keyword / NOT needed -> test(s) will be ignored ⚠️
+  * Comments
+    * ONLY allowed | 
+      * start of a new line
+      * anywhere | feature file
+    * `  # Commentary` or `# Commentary`
+      * == -- can start with -- >= 0 spaces
+  * Block comments
+    * ⚠️ NOT yet supported ⚠️
+  * indentation
+    * recommended, it's 2 spaces
+  * each line = `keyword textWhichIsGoingToBeMatchedWithAStepDefinition` 
+    * [step definition](/docs/cucumber/step-definitions)
+  * _Example:_  
 
 ```gherkin
 Feature: Guess the word
 
+# 1. indentation of 2 spaces in below lines
   # The first example has two steps
+  # 2.  Scenario:     keyword / needs `:`
   Scenario: Maker starts a game
+    # 3. Comments ONLY allowed at the start of the line -- Uncomment next line to see the error
+    #When the Maker starts a game  #Commentary NOT allowed out of the start of the line
+    # 4. NOT all keywords need `:` followed   -- Uncomment next line to see the error
+    #When: the Maker starts a game
     When the Maker starts a game
     Then the Maker waits for a Breaker to join
 
@@ -31,26 +45,78 @@ Feature: Guess the word
     Then the Breaker must guess a word with 5 characters
 ```
 
-The trailing portion (after the keyword) of each step is matched to
-a code block, called a [step definition](/docs/cucumber/step-definitions).
+```gherkin
+# language: es
+Característica: Adivina la palabra
 
-Please note that some keywords *are* followed by a colon (`:`) and some *are not*. If you add a colon after a keyword
-that should not be followed by one, your test(s) will be ignored.
+  Escenario: Alfredo se une al juego
+    Dado Marcos ha empezado el juego con la palbra "caca"
+    Cuando es el turno de Alfredo
+    Entonces Alfredo puedo empezar a adivinar
+```
 
 # Keywords
 
-Each line that isn't a blank line has to start with a Gherkin *keyword*, followed by any text you like. The only exceptions are the free-form descriptions placed underneath `Example`/`Scenario`, `Background`, `Scenario Outline` and `Rule` lines.
+* 👁️ keywords / NOT force to start the line with them 👁️
+  * `Example`/`Scenario`,
+  * `Background`,
+  * `Scenario Outline`
+  * `Rule`
 
-The primary keywords are:
+```gherkin
+# language: en
+Feature: User Login
 
-- [`Feature`](#feature)
-- [`Rule`](#rule) (as of Gherkin 6)
-- [`Example`](#example) (or `Scenario`)
-- [`Given`](#given), [`When`](#when), [`Then`](#then), [`And`](#and-but), [`But`](#and-but) for steps (or [`*`](#Asterisk))
-- [`Background`](#background)
-- [`Scenario Outline`](#scenario-outline) (or [`Scenario Template`](#scenario-outline))
-- [`Examples`](#examples) (or [`Scenarios`](#examples))
+  Background:
+    # Next line start WITHOUT a keyword
+    steps are executed before each scenario in this feature.
+    Given the system is online
+  
+  Scenario: Successful login
+    # Next line start WITHOUT a keyword
+    This scenario demonstrates a successful login to the system by a valid user.
+    Given the user is on the login page
+    When the user enters a valid username and password
+    Then the user should be redirected to the dashboard
 
+  Scenario Outline: Login with different user roles
+    # Next line start WITHOUT a keyword
+    This scenario outlines how different user roles access the system.
+    Given the user is on the login page
+    When the user logs in as <role>
+    Then the user should be redirected to the <role> dashboard
+
+    Examples:
+      # Next line start WITHOUT a keyword
+      The examples below illustrate the different user roles.
+      | role      |
+      | Admin     |
+      | Moderator |
+      | User      |
+
+  Rule: Password Management
+    # Next line start WITHOUT a keyword
+    This rule defines the behavior related to password management.
+    Background:
+      Given the user is logged in
+    Scenario: User changes password successfully
+      This scenario shows the steps for a successful password change.
+      When the user navigates to the password change page
+      And the user enters a new valid password
+      Then the user should see a confirmation message "Password changed successfully"
+
+```
+
+* primary keywords
+  * [`Feature`](#feature)
+  * [`Rule`](#rule) (as of Gherkin 6)
+  * [`Example`](#example) (or `Scenario`)
+  * [`Given`](#given), [`When`](#when), [`Then`](#then), [`And`](#and-but), [`But`](#and-but) for steps (or [`*`](#Asterisk))
+  * [`Background`](#background)
+  * [`Scenario Outline`](#scenario-outline) (or [`Scenario Template`](#scenario-outline))
+  * [`Examples`](#examples) (or [`Scenarios`](#examples))
+
+* TODO:
 There are a few secondary keywords as well:
 
 - `"""` (Doc Strings)
