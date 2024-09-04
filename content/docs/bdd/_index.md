@@ -6,55 +6,53 @@ menu: main
 iconClass: far fa-comments
 ---
 
-Behaviour-Driven Development (BDD) is the software development process that Cucumber was built to support.
-
-There's much more to BDD than just using Cucumber.
+* Behaviour-Driven Development (BDD)
+  * := software development process
+  * Cucumber support it
 
 # What is BDD?
 
-BDD is a way for software teams to work that closes the gap between business people and technical people by:
-
-* Encouraging collaboration across roles to build shared understanding of the problem to be solved
-* Working in rapid, small iterations to increase feedback and the flow of value
-* Producing system documentation that is automatically checked against the system's behaviour
-
-We do this by focusing collaborative work around concrete, real-world examples that illustrate how we want the system to behave. We use those examples to guide us from concept through to implementation, in a process of continuous collaboration.
+* allows
+  * closing the gap between business people -- and -- technical people
+  * encouraging collaboration across roles
+  * working in rapid, small iterations to increase feedback
+  * producing system documentation / 
+    * -- is automatically checked against the -- system's behaviour
+    * ⭐enables you to continue confidently ⭐
+      * Reason: 🧠code -- reflects the -- documentation, & the documentation -- reflects the -- team's shared understanding  🧠
+  * guiding from concept -- through to -- implementation
 
 ## BDD and agile
 
-We assume that your team are using some kind of agile methodology already, planning work in small increments of value like [User Stories]. BDD does not replace your existing agile process, it enhances it.
+* BDD 
+  * does NOT replace your existing agile process, BUT it enhances it
+  * == set of plugins | your existing process
 
-Think of BDD as a set of plugins for your existing process that will make your team more able to deliver on the promises of agile: timely, reliable releases of working software that meets your organisation’s evolving needs, requiring some maintenance effort and discipline.
+# Day-to-day BDD activity: _Discovery_, _Formulation_, and _Automation_
 
-## Rapid iterations
+* Day-to-day BDD activity steps
+  1. Discovery. if a [User Story] comes -> agreed on
+     1. concrete examples
+     2. expected outcomes / behaviors
+  2. Formulation. document those examples / -- can be --
+     1. automated
+     2. checked for agreement
+  3. Automation. implement the behaviour / documented example
 
-We assume you would like to be able to respond quickly to feedback from your users, and do only the minimal work necessary to meet those needs.
+* goal
+  * each change is small
+  * iterate rapidly
 
-BDD encourages working in rapid iterations, continuously breaking down your user's problems into small pieces that can flow through your development process as quickly as possible.
-
-# Three practices
-
-Essentially, day-to-day BDD activity is a three-step, iterative process:
-
-1. First, take a small upcoming change to the system -- a [User Story] -- and talk about concrete examples of the new functionality to explore, discover and agree on the details of what's expected to be done.
-1. Next, document those examples in a way that can be automated, and check for agreement.
-1. Finally, implement the behaviour described by each documented example, starting with an automated test to guide the development of the code.
-
-The idea is to make each change small and iterate rapidly, moving back up a level each time you need more information. Each time you automate and implement a new example, you've added something valuable to your system, and you're ready to respond to feedback.
-
-We call these practices _Discovery_, _Formulation_, and _Automation_.
 
 <figure>
-  <img alt="diagram of how the practices fit together" src="/img/bdd-practices-diagram.png" width="600px">
+  <img alt="diagram of how the practices fit together" src="bdd-practices-diagram.png" width="600px">
   <figcaption>Discovery, Formulation and Automation</figcaption>
 </figure> 
 
-Over time, the documented examples become an asset that enables your team to continue confidently and rapidly making changes to the system. The code reflects the documentation, and the documentation reflects the team's shared understanding of the problem domain. This shared understanding is constantly evolving.
-
-There's lots to learn about each of these practices. We'll summarise each of them below.
 
 ## Discovery: What it _could_ do
 
+* TODO:
 > The hardest single part of building a software system is deciding precisely what to build.
 >
 > -- <cite>Fred Brooks, The mythical man-month</cite>
