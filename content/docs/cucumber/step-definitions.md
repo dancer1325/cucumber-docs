@@ -11,126 +11,126 @@ polyglot:
 weight: 1
 ---
 
-A Step Definition is a {{% stepdef-body %}} with an [expression](#expressions) that links it to one or more [Gherkin steps](/docs/gherkin/reference#steps).
-When Cucumber executes a [Gherkin step](/docs/gherkin/reference#steps) in a scenario, it will look for a matching *step definition* to execute.
+* Step Definition
+  * := {{% stepdef-body %}} + [expression](#expressions) / -- links it to -- >= 1 [Gherkin steps](/docs/gherkin/reference#steps)
+  * if Cucumber executes a [Gherkin step](/docs/gherkin/reference#steps) | scenario -> will look for a matching *step definition*
+  * _Example:_ let's Gherkin scenario
 
-To illustrate how this works, look at the following Gherkin Scenario:
+    ```gherkin
+    Scenario: Some cukes
+      Given I have 48 cukes in my belly       // Gherkin step
+    ```
 
-```gherkin
-Scenario: Some cukes
-  Given I have 48 cukes in my belly
-```
-
-The `I have 48 cukes in my belly` part of the step (the text following the `Given` keyword) will match the following step definition:
-
-{{% block "java" %}}
-
-```java
-package com.example;
-import io.cucumber.java.en.Given;
-
-public class StepDefinitions {
-    @Given("I have {int} cukes in my belly")
-    public void i_have_n_cukes_in_my_belly(int cukes) {
-        System.out.format("Cukes: %n\n", cukes);
-    }
-}
-```
-
-Or, using Java8 lambdas:
-
-```java
-package com.example;
-import io.cucumber.java8.En;
-
-public class StepDefinitions implements En {
-    public StepDefinitions() {
-        Given("I have {int} cukes in my belly", (Integer cukes) -> {
+    {{% block "java" %}}
+    
+    ```java
+    package com.example;
+    import io.cucumber.java.en.Given;
+    
+    public class StepDefinitions {
+        @Given("I have {int} cukes in my belly")        // Step definition / matches with the previous Gherkin step
+        public void i_have_n_cukes_in_my_belly(int cukes) {
             System.out.format("Cukes: %n\n", cukes);
-        });
-    }
-}
-```
-{{% /block %}}
-
-{{% block "kotlin" %}}
-
-```kotlin
-package com.example
-import io.cucumber.java8.En
-
-class StepDefinitions : En {
-
-    init {
-        Given("I have {int} cukes in my belly") { cukes: Int ->
-                println("Cukes: $cukes")
         }
     }
-
-}
-```
-
-{{% /block %}}
-
-{{% block "kotlin" %}}
-
-```kotlin
-package com.example
-import io.cucumber.java8.En
-
-class StepDefinitions : En {
-
-    init {
-        Given("I have {int} cukes in my belly") { cukes: Int ->
-                println("Cukes: $cukes")
+    ```
+    
+    Or, using Java8 lambdas:
+    
+    ```java
+    package com.example;
+    import io.cucumber.java8.En;
+    
+    public class StepDefinitions implements En {
+        // Step definition / matches with the previous Gherkin step
+        public StepDefinitions() {
+            Given("I have {int} cukes in my belly", (Integer cukes) -> {
+                System.out.format("Cukes: %n\n", cukes);
+            });
         }
     }
+    ```
+    {{% /block %}}
 
-}
-```
-
-{{% /block %}}
-
-{{% block "scala" %}}
-
-```scala
-package com.example
-import io.cucumber.scala.{ScalaDsl, EN}
-
-class StepDefinitions extends ScalaDsl with EN {
-
-    Given("I have {int} cukes in my belly") { cukes: Int =>
-        println(s"Cukes: $cukes")
+    {{% block "kotlin" %}}
+    
+    ```kotlin
+    package com.example
+    import io.cucumber.java8.En
+    
+    class StepDefinitions : En {
+        // Step definition / matches with the previous Gherkin step -- via -- lambda expressions
+        init {
+            Given("I have {int} cukes in my belly") { cukes: Int ->
+                    println("Cukes: $cukes")
+            }
+        }
+    
     }
+    ```
+    
+    {{% /block %}}
+    
+    {{% block "kotlin" %}}
+    
+    ```kotlin
+    package com.example
+    import io.cucumber.java8.En
+    
+    class StepDefinitions : En {
+    
+        init {
+            Given("I have {int} cukes in my belly") { cukes: Int ->
+                    println("Cukes: $cukes")
+            }
+        }
+    
+    }
+    ```
+    
+    {{% /block %}}
 
-}
-```
+    {{% block "scala" %}}
+    
+    ```scala
+    package com.example
+    import io.cucumber.scala.{ScalaDsl, EN}
+    
+    class StepDefinitions extends ScalaDsl with EN {
+    
+        Given("I have {int} cukes in my belly") { cukes: Int =>
+            println(s"Cukes: $cukes")
+        }
+    
+    }
+    ```
+    
+    {{% /block %}}
 
-{{% /block %}}
+    {{% block "ruby" %}}
+    
+    ```ruby
+    Given('I have {int} cukes in my belly') do |cukes|
+      puts "Cukes: #{cukes}"
+    end
+    ```
+    
+    {{% /block %}}
 
-
-{{% block "ruby" %}}
-
-```ruby
-Given('I have {int} cukes in my belly') do |cukes|
-  puts "Cukes: #{cukes}"
-end
-```
-{{% /block %}}
-
-{{% block "javascript" %}}
-
-```javascript
-const { Given } = require('cucumber')
-
-Given('I have {int} cukes in my belly', function (cukes) {
-  console.log(`Cukes: ${cukes}`)
-});
-```
-{{% /block %}}
+    {{% block "javascript" %}}
+    
+    ```javascript
+    const { Given } = require('cucumber')
+    
+    Given('I have {int} cukes in my belly', function (cukes) {
+      console.log(`Cukes: ${cukes}`)
+    });
+    ```
+    {{% /block %}}
 
 # Expressions
 
+* TODO:
 A step definition's *expression* can either be a [Regular Expression](https://en.wikipedia.org/wiki/Regular_expression)
 or a [Cucumber Expression](/docs/cucumber/cucumber-expressions). The examples in this section use Cucumber Expressions. 
 If you prefer to use Regular Expressions, each {{% expression-parameter %}} from the match will be passed as arguments to the step
