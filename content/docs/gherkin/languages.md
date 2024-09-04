@@ -2,12 +2,13 @@
 title: Localisation
 subtitle: "Languages in which you can write"
 ---
-In order to allow Gherkin to be written in a number of languages, the keywords have been translated into multiple languages. To improve readability and flow, some languages may have more than one translation for any given keyword.
+
+* keywords -- have been translated into -- multiple languages /
+  * 👁️SOME languages -- may have -- >=1 translation / keyword 👁️
+    * Reason: 🧠improve readability and flow 🧠
 
 ### Overview
-You can find all translation of Gherkin [on GitHub](https://github.com/cucumber/gherkin).
-This is also the place to add or update translations.
-
-A list of the currently supported languages and their keywords can be found below.
+* find ALL translation [on GitHub](https://github.com/cucumber/gherkin).
+* list of the currently supported languages
 
 {{% gherkin-i18n-table %}}
