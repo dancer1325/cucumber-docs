@@ -11,8 +11,8 @@ polyglot:
 weight: 2
 ---
 
-Cucumber can be used to implement automated tests based on scenarios described in your Gherkin feature files.
-
+* uses of Cucumber
+  * implement automated tests -- based on -- scenarios described | Gherkin
 
 # Step Arguments
 
@@ -774,14 +774,11 @@ of how to use InstallPlugin and what a Cucumber plugin can do.
 
 # Tags
 
-Tags are a great way to organise your features and scenarios.
-
-They can be used for two purposes:
-
-* [Running a subset of scenarios](#running-a-subset-of-scenarios)
-* [Restricting hooks to a subset of scenarios](#conditional-hooks)
-
-Consider the following example:
+* allows
+  * organising your features and scenarios
+* uses
+  * [Running a subset of scenarios](#running-a-subset-of-scenarios)
+  * [Restricting hooks to a subset of scenarios](#conditional-hooks)
 
 ```gherkin
 @billing
@@ -795,118 +792,117 @@ Feature: Verify billing
     Given hello
 ```
 
-A feature or scenario can have as many tags as you like. Separate them with spaces:
+* `@tag1 @tag2 ...`
 
 ```gherkin
+# tag1 tag2 ...
 @billing @bicker @annoy
 Feature: Verify billing
 ```
 
-Tags can be placed above the following Gherkin elements:
+* can be placed | 
+  * above the
+    * `Feature`
+    * `Scenario`
+    * `Scenario Outline`
+    * `Examples`
 
-* `Feature`
-* `Scenario`
-* `Scenario Outline`
-* `Examples`
+    ```gherkin
+    Scenario Outline: Steps will run conditionally if tagged
+      Given user is logged in
+      When user clicks <link>
+      Then user will be logged out
+    
+      @mobile
+      Examples:
+        | link                  |
+        | logout link on mobile |
+    
+      @desktop
+      Examples:
+        | link                   |
+        | logout link on desktop |
+    ```
 
-In `Scenario Outline`, you can use tags on different example like below:
-
-```gherkin
-Scenario Outline: Steps will run conditionally if tagged
-  Given user is logged in
-  When user clicks <link>
-  Then user will be logged out
-
-  @mobile
-  Examples:
-    | link                  |
-    | logout link on mobile |
-
-  @desktop
-  Examples:
-    | link                   |
-    | logout link on desktop |
-```
-
-It is *not* possible to place tags above `Background` or steps (`Given`, `When`, `Then`, `And` and `But`).
+  * *NOT* 
+    * `Background`
+    * steps (`Given`, `When`, `Then`, `And` and `But`)
 
 ## Tag Inheritance
 
-Tags are inherited by child elements.
+* -- inherited by -- child elements
+  * -> NOT need to repeat them
+  * _Example1:_ tags / placed above a `Feature` -- will be inherited by -- `Scenario`, `Scenario Outline`, or `Examples`
+  * _Example2:_ tags / placed above a `Scenario Outline` -- will be inherited by -- `Examples`
 
-Tags that are placed above a `Feature` will be inherited by `Scenario`, `Scenario Outline`, or `Examples`.
-
-Tags that are placed above a `Scenario Outline` will be inherited by `Examples`.
-
-## Running a subset of scenarios
-
-You can tell Cucumber to only run scenarios with a particular tag:
+## Running a subset of scenarios -- via -- tag
 
 {{% block "java,kotlin,scala" %}}
-For JUnit 5 see the [cucumber-junit-platform-engine documentation](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine#tags)
+* | JUnit 5, check [cucumber-junit-platform-engine documentation](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine#tags)
+* | JUnit 4 & TestNG -> use a
+  * JVM system property
 
-For JUnit 4 and TestNG using a JVM system property:
+    ```shell
+    mvn test -Dcucumber.filter.tags="@smoke and @fast"
+    ```
 
-```shell
-mvn test -Dcucumber.filter.tags="@smoke and @fast"
-```
+  * environment variable
 
-Or an environment variable:
+    ```shell
+    # Linux / OS X:
+    CUCUMBER_FILTER_TAGS="@smoke and @fast" mvn test
+    
+    # Windows:
+    set CUCUMBER_FILTER_TAGS="@smoke and @fast"
+    mvn test
+    ```
 
-```shell
-# Linux / OS X:
-CUCUMBER_FILTER_TAGS="@smoke and @fast" mvn test
-
-# Windows:
-set CUCUMBER_FILTER_TAGS="@smoke and @fast"
-mvn test
-```
-
-Or changing your JUnit 4/TestNG  runner class:
+  * JUnit 4/TestNG  runner class
 {{% /block %}}
 
-{{% block "java" %}}
+    {{% block "java" %}}
+    
+    ```java
+    @CucumberOptions(tags = "@smoke and @fast")
+    public class RunCucumberTest {}
+    ```
+    {{% /block %}}
 
-```java
-@CucumberOptions(tags = "@smoke and @fast")
-public class RunCucumberTest {}
-```
-{{% /block %}}
+    {{% block "kotlin" %}}
+    
+    ```kotlin
+    @CucumberOptions(tags = "@smoke and @fast")
+    class RunCucumberTest
+    ```
+    {{% /block %}}
 
-{{% block "kotlin" %}}
+    {{% block "scala" %}}
+    
+    ```scala
+    @CucumberOptions(tags = "@smoke and @fast")
+    class RunCucumberTest {}
+    ```
+    {{% /block %}}
 
-```kotlin
-@CucumberOptions(tags = "@smoke and @fast")
-class RunCucumberTest
-```
-{{% /block %}}
+    {{% block "javascript" %}}
+    
+    ```shell
+    # You can omit the quotes if the expression is a single tag
+    ./node_modules/.bin/cucumber.js --tags "@smoke and @fast"
+    ```
+    {{% /block %}}
 
-{{% block "scala" %}}
-
-```scala
-@CucumberOptions(tags = "@smoke and @fast")
-class RunCucumberTest {}
-```
-{{% /block %}}
-
-{{% block "javascript" %}}
-
-```shell
-# You can omit the quotes if the expression is a single tag
-./node_modules/.bin/cucumber.js --tags "@smoke and @fast"
-```
-{{% /block %}}
-
-{{% block "ruby" %}}
-
-```shell
-# You can omit the quotes if the expression is a single tag
-cucumber --tags "@smoke and @fast"
-```
-{{% /block %}}
+    {{% block "ruby" %}}
+    
+    ```shell
+    # You can omit the quotes if the expression is a single tag
+    cucumber --tags "@smoke and @fast"
+    ```
+    {{% /block %}}
 
 ## Ignoring a subset of scenarios
 
+* TODO:
 You can tell Cucumber to ignore scenarios with a particular tag:
 
 {{% block "java,kotlin,scala" %}}
