@@ -142,6 +142,7 @@ Gherkin is localised for many [spoken languages](#spoken-languages); each has th
     * -- available for -- reporting 
     * ends | starting a line with a keyword
 * 1! feature / `.feature`
+* many tags are allowed to add
 
 ```gherkin
 Feature: Guess the word
