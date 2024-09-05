@@ -109,66 +109,63 @@ weight: 1
     ```
     {{% /block %}}
 
-# Expressions
+# Step definition's Expressions
 
-* TODO:
-A step definition's *expression* can either be a [Regular Expression](https://en.wikipedia.org/wiki/Regular_expression)
-or a [Cucumber Expression](/docs/cucumber/cucumber-expressions). The examples in this section use Cucumber Expressions. 
-If you prefer to use Regular Expressions, each {{% expression-parameter %}} from the match will be passed as arguments to the step
-definition's {{% stepdef-body %}}.
+* types
+  * [Cucumber Expression](/docs/cucumber/cucumber-expressions) 
+  * [Regular Expression](https://en.wikipedia.org/wiki/Regular_expression)
+    * == {{% expression-parameter %}}
+      * is transformed
+      * -- are passed as -- arguments to the step definition's {{% stepdef-body %}}
+    * _Examples:_ 
 
-{{% block "java" %}}
+    {{% block "java" %}}
+    
+    ```java
+    @Given("I have {int} cukes in my belly")  // regular expression / pass expression parameter
+    public void i_have_n_cukes_in_my_belly(int cukes) {
+        println("Cukes: $cukes");
+    }
+    ```
+    {{% /block %}}
 
-```java
-@Given("I have {int} cukes in my belly")
-public void i_have_n_cukes_in_my_belly(int cukes) {
-}
-```
-{{% /block %}}
+    {{% block "kotlin" %}}
+    
+    ```kotlin
+    Given("I have {int} cukes in my belly") { cukes: Int ->
+            println("Cukes: $cukes")
+    }
+    ```
+    {{% /block %}}
 
-{{% block "kotlin" %}}
+    {{% block "scala" %}}
+    
+    ```scala
+    Given("I have {int} cukes in my belly") { cukes: Int =>
+        println(s"Cukes: $cukes")
+    }
+    ```
+    {{% /block %}}
 
-```kotlin
-Given("I have {int} cukes in my belly") { cukes: Int ->
-        println("Cukes: $cukes")
-}
-```
-{{% /block %}}
+    {{% block "ruby" %}}
+    
+    ```ruby
+    Given(/I have {int} cukes in my belly/) do |cukes|
+    end
+    ```
+    {{% /block %}}
 
-{{% block "scala" %}}
-
-```scala
-Given("I have {int} cukes in my belly") { cukes: Int =>
-    println(s"Cukes: $cukes")
-}
-```
-{{% /block %}}
-
-{{% block "ruby" %}}
-
-```ruby
-Given(/I have {int} cukes in my belly/) do |cukes|
-end
-```
-{{% /block %}}
-
-{{% block "javascript" %}}
-
-```javascript
-Given(/I have {int} cukes in my belly/, function (cukes) {
-});
-```
-{{% /block %}}
-
-If the {{% expression-parameter %}} expression is identical to one of the registered
-[parameter types](/docs/cucumber/cucumber-expressions#parameter-types)'s `regexp`,
-the captured string will be transformed before it is passed to the
-step definition's {{% stepdef-body %}}. In the example above, the `cukes`
-argument will be an integer, because the built-in `int` parameter type's
-`regexp` is `\d+` .
+    {{% block "javascript" %}}
+    
+    ```javascript
+    Given(/I have {int} cukes in my belly/, function (cukes) {
+    });
+    ```
+    {{% /block %}}
 
 # State management
 
+* TODO:
 A step definition can transfer state to a subsequent step definition by storing
 state in instance variables.
 
