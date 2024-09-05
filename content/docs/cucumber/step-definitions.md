@@ -197,104 +197,95 @@ Given('I have {int} cukes in my belly', cukes => {
 
 # Snippets
 
-* TODO:
-When Cucumber encounters a [Gherkin step](/docs/gherkin/reference#steps) without a
-matching step definition, it will print a
-step definition snippet with a matching [Cucumber Expression](/docs/cucumber/cucumber-expressions).
-You can use this as a starting point for new step definitions.
-
-Consider this Gherkin step:
-
+* uses
+  * Cucumber encounters a [Gherkin step](/docs/gherkin/reference#steps) / NOT matching step definition
+* suggest step definitions / matching [Cucumber Expression](/docs/cucumber/cucumber-expressions)
+  * _Example:_ Gherkin step / NO matching step definition
+    
+    ```gherkin
     Given I have 3 red balls
+    ```
 
-If you don't have a matching step definition, Cucumber will suggest the following
-snippet:
+    {{% block "java" %}}
+    
+    ```java
+    @Given("I have {int} red balls")
+    public void i_have_red_balls(int int1) {
+    }
+    ```
+    {{% /block %}}
 
-{{% block "java" %}}
+    {{% block "kotlin" %}}
+    
+    ```kotlin
+    @Given("I have {int} red balls") { balls: Int ->
+    }
+    ```
+    {{% /block %}}
 
-```java
-@Given("I have {int} red balls")
-public void i_have_red_balls(int int1) {
-}
-```
-{{% /block %}}
+    {{% block "scala" %}}
+    
+    ```scala
+    Given("I have {int} red balls") { balls: Int =>
+    }
+    ```
+    {{% /block %}}
 
-{{% block "kotlin" %}}
+    {{% block "ruby" %}}
+    
+    ```ruby
+    Given('I have {int} red balls') do |int1|
+    end
+    ```
+    {{% /block %}}
 
-```kotlin
-@Given("I have {int} red balls") { balls: Int ->
-}
-```
-{{% /block %}}
+    {{% block "javascript" %}}
+    
+    ```javascript
+    Given("I have {int} red balls", function (int1) {
+    });
+    ```
+    {{% /block %}}
+ 
+    * _Example2:_ Previous / another parameter type WITHOUT matching step definition
 
-{{% block "scala" %}}
+    {{% block "java" %}}
+    
+    ```java
+    @Given("I have {int} {color} balls")
+    public void i_have_color_balls(int int1, Color color) {
+    }
+    ```
+    {{% /block %}}
 
-```scala
-Given("I have {int} red balls") { balls: Int =>
-}
-```
-{{% /block %}}
+    {{% block "kotlin" %}}
+    
+    ```kotlin
+    @Given("I have {int} {color} balls") { balls: Int, color: Color ->
+    }
+    ```
+    {{% /block %}}}
 
-{{% block "ruby" %}}
+    {{% block "scala" %}}
+    
+    ```scala
+    Given("I have {int} {color} balls") { (balls: Int, color: Color) =>
+    }
+    ```
+    {{% /block %}}
 
-```ruby
-Given('I have {int} red balls') do |int1|
-end
-```
-{{% /block %}}
+    {{% block "ruby" %}}
+    
+    ```ruby
+    Given('I have {int} {color} balls') do |int1, color|
+    end
+    ```
+    {{% /block %}}
 
-{{% block "javascript" %}}
-
-```javascript
-Given("I have {int} red balls", function (int1) {
-});
-```
-{{% /block %}}
-
-Suggested snippets will use your own [parameter types](/docs/cucumber/cucumber-expressions#parameter-types)
-if they match parts of your undefined step. If a [color](/docs/cucumber/cucumber-expressions#custom-parameter-types)
-parameter type exists, Cucumber would use that in the suggested expression:
-
-{{% block "java" %}}
-
-```java
-@Given("I have {int} {color} balls")
-public void i_have_color_balls(int int1, Color color) {
-}
-```
-{{% /block %}}
-
-{{% block "kotlin" %}}
-
-```kotlin
-@Given("I have {int} {color} balls") { balls: Int, color: Color ->
-}
-```
-{{% /block %}}}
-
-{{% block "scala" %}}
-
-```scala
-Given("I have {int} {color} balls") { (balls: Int, color: Color) =>
-}
-```
-{{% /block %}}
-
-{{% block "ruby" %}}
-
-```ruby
-Given('I have {int} {color} balls') do |int1, color|
-end
-```
-{{% /block %}}
-
-{{% block "javascript" %}}
-
-```javascript
-Given("I have {int} {color} balls", function (int1, color) {
-});
-```
-{{% /block %}}
-
-Make sure you use the `summary` plugin when running Cucumber in order
-to have the snippets printed.
+    {{% block "javascript" %}}
+    
+    ```javascript
+    Given("I have {int} {color} balls", function (int1, color) {
+    });
+    ```
+    {{% /block %}}
