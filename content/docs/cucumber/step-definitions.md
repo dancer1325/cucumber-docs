@@ -185,14 +185,19 @@ Given('I have {int} cukes in my belly', cukes => {
 
 # Scope
 
-* TODO:
-Step definitions aren't linked to a particular feature file or scenario.
-The file, class or package name of a step definition does not affect what Gherkin
-steps it will match. The only thing that matters is the step definition's
-expression.
+* Step definitions
+  * -- are NOT linked to a particular -- feature file or scenario
+  * -- sensitive part is --
+    * 's expression
+      * Reason: 🧠 way to match 🧠
+    * ❌ NOT ❌
+      * 's file,
+      * 's class
+      * 's package name
 
 # Snippets
 
+* TODO:
 When Cucumber encounters a [Gherkin step](/docs/gherkin/reference#steps) without a
 matching step definition, it will print a
 step definition snippet with a matching [Cucumber Expression](/docs/cucumber/cucumber-expressions).
