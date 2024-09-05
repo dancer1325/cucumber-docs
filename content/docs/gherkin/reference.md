@@ -226,143 +226,106 @@ Examples follow this same pattern:
 
 ## Steps
 
-Each step starts with `Given`, `When`, `Then`, `And`, or `But`.
+* step starts with `Given`, `When`, `Then`, `And`, or `But`
+* Cucumber executes 1! scenario's step / sequence you’ve written
+  * -- looks for a -- matching step definition
+    * -> ⚠️ step's text must be unique == != other step's text ⚠️
 
-Cucumber executes each step in a scenario one at a time, in the sequence you’ve written them in.
-When Cucumber tries to execute a step, it looks for a matching step definition to execute.
+        ```gherkin
+        # Next ones are duplicated steps, because the step's text is the same
+        Given there is money in my account
+        Then there is money in my account
+        ```
 
-Keywords are not taken into account when looking for a step definition. This means you cannot have a
-`Given`, `When`, `Then`, `And` or `But` step with the same text as another step.
-
-Cucumber considers the following steps duplicates:
-
-```gherkin
-Given there is money in my account
-Then there is money in my account
-```
-
-This might seem like a limitation, but it forces you to come up with a less ambiguous, more clear
-domain language:
-
-```gherkin
-Given my account has a balance of £430
-Then my account should have a balance of £430
-```
+        ```gherkin
+        # Rephrase of the previous one / it's valid
+        Given my account has a balance of £430
+        Then my account should have a balance of £430
+        ```
 
 ### Given
 
-`Given` steps are used to describe the initial context of the system - the *scene* of the scenario.
-It is typically something that happened in the *past*.
-
-When Cucumber executes a `Given` step, it will configure the system to be in a well-defined state,
-such as creating and configuring objects or adding data to a test database.
-
-The purpose of `Given` steps is to **put the system in a known state** before the user (or external system) starts interacting with the system (in the `When` steps).
-Avoid talking about user interaction in `Given`'s. If you were creating use cases, `Given`'s would be your preconditions.
-
-It's okay to have several `Given` steps (use `And` or `But` for number 2 and upwards to make it more readable).
-
-Examples:
-
-- Mickey and Minnie have started a game
-- I am logged in
-- Joe has a balance of £42
+* uses
+  * describe the initial context of the system == *scene* of the scenario == preconditions
+    * typically something / happened in the *past*
+    * _Example:_ create and configure objects or adding data | test database
+* goal
+  * **put the system in a known state**
+* ❌NO user interaction | `Given`'s ❌
+* several `Given` steps / -- linked with -- `And` or `But`
 
 ### When
 
-`When` steps are used to describe an event, or an *action*. This can be a person interacting with the system, or it can be an event triggered by another system.
-
-Examples:
-
-- Guess a word
-- Invite a friend
-- Withdraw money
-
-{{% note "Imagine it's 1922" %}}
-Most software does something people could do manually (just not as efficiently).
-
-Try hard to come up with examples that don't make any assumptions about
-technology or user interface. Imagine it's 1922, when there were no computers.
-
-Implementation details should be hidden in the [step definitions](/docs/cucumber/step-definitions).
-{{% /note %}}
+* uses
+  * describe an event
+    * _Example1:_ person -- interacting with the -- system, or
+    * _Example2:_ event -- triggered by -- another system
+* Implementation details -- should be hidden in the -- [step definitions](/docs/cucumber/step-definitions)
 
 ### Then
 
-`Then` steps are used to describe an *expected* outcome, or result.
-
-The [step definition](/docs/cucumber/step-definitions) of a `Then` step should use an *assertion* to
-compare the *actual* outcome (what the system actually does) to the *expected* outcome
-(what the step says the system is supposed to do).
-
-An outcome *should* be on an **observable** output. That is, something that comes *out* of the system (report, user interface, message), and not a behaviour deeply buried inside the system (like a record in a database).
-
-Examples:
-
-- See that the guessed word was wrong
-- Receive an invitation
-- Card should be swallowed
-
-While it might be tempting to implement `Then` steps to look in the database - resist that temptation!
-
-You should only verify an outcome that is observable for the user (or external system), and changes to a database are usually not.
+* uses
+  * describe an *expected* outcome / is an **observable**
+    * **observable** == comes *out* of the system != behaviour deeply buried | system
+      * _Examples:_ report, UI, message
+      * _NOTValid:_ record | DDBB
+* 👁️[step definition](/docs/cucumber/step-definitions) related -- should be an -- *assertion* 👁️
 
 ### And, But
 
-If you have successive `Given`'s or `Then`'s, you *could* write:
+* `And`
+  * uses
+    * successive `Given`'s or `Then`'s
 
-```gherkin
-Example: Multiple Givens
-  Given one thing
-  Given another thing
-  Given yet another thing
-  When I open my eyes
-  Then I should see something
-  Then I shouldn't see something else
-```
+      ```gherkin
+      Example: Multiple Givens
+        Given one thing
+        Given another thing
+        Given yet another thing
+        When I open my eyes
+        Then I should see something
+        Then I shouldn't see something else
+      ```
 
-Or, you could make the example more fluidly structured by replacing the successive `Given`'s or `Then`'s with `And`'s and `But`'s:
+      ```gherkin
+      # Refactor previously, replacing successive Given by And
+      Example: Multiple Givens
+        Given one thing
+        And another thing
+        And yet another thing
+        When I open my eyes
+        Then I should see something
+        But I shouldn't see something else
+      ```
 
-```gherkin
-Example: Multiple Givens
-  Given one thing
-  And another thing
-  And yet another thing
-  When I open my eyes
-  Then I should see something
-  But I shouldn't see something else
-```
+* `*`
+  * uses
+    * == `And` == successive `Given`'s or `Then`'s
 
-<h3 id="Asterisk">*</h3>
+        ```gherkin
+        Scenario: All done
+          Given I am out shopping
+          And I have eggs
+          And I have milk
+          And I have butter
+          When I check my list
+          Then I don't need anything
+        ```
 
-Gherkin also supports using an asterisk (`*`) in place of any of the normal step keywords. This can be helpful when you have some steps that are effectively a _list of things_, so you can express it more like bullet points where otherwise the natural language of `And` etc might not read so elegantly.
-
-For example:
-
-```gherkin
-Scenario: All done
-  Given I am out shopping
-  And I have eggs
-  And I have milk
-  And I have butter
-  When I check my list
-  Then I don't need anything
-```
-
-Could be expressed as:
-
-```gherkin
-Scenario: All done
-  Given I am out shopping
-  * I have eggs
-  * I have milk
-  * I have butter
-  When I check my list
-  Then I don't need anything
-```
+        ```gherkin
+      # Refactor previously, replacing successive Given by *
+        Scenario: All done
+          Given I am out shopping
+          * I have eggs
+          * I have milk
+          * I have butter
+          When I check my list
+          Then I don't need anything
+        ```
 
 ## Background
 
+* TODO:
 Occasionally you'll find yourself repeating the same `Given` steps in all of the scenarios in a `Feature`.
 
 Since it is repeated in every scenario, this is an indication that those steps
