@@ -116,16 +116,14 @@ Feature: User Login
   * [`Scenario Outline`](#scenario-outline) (or [`Scenario Template`](#scenario-outline))
   * [`Examples`](#examples) (or [`Scenarios`](#examples))
 
-* TODO:
-There are a few secondary keywords as well:
-
-- `"""` (Doc Strings)
-- `|` (Data Tables)
-- `@` (Tags)
-- `#` (Comments)
+* secondary keywords
+  * `"""` (Doc Strings)
+  * `|` (Data Tables)
+  * `@` (Tags)
+  * `#` (Comments)
 
 {{% note "Localisation"%}}
-Gherkin is localised for many [spoken languages](#spoken-languages); each has their own localised equivalent of these keywords.
+* Previous keywords have their equivalent / [spoken languages](#spoken-languages)
 {{% /note %}}
 
 ## Feature
@@ -156,15 +154,20 @@ Feature: Guess the word
 
 ## Descriptions
 
-Free-form descriptions (as described above for `Feature`) can also be placed underneath
-`Example`/`Scenario`, `Background`, `Scenario Outline` and `Rule`.
-
-You can write anything you like, as long as no line starts with a keyword.
-
-Descriptions can be in the form of Markdown - formatters including the official HTML formatter support this.
+* check above for `Feature`
+* valid 
+  * |
+    * `Example`/`Scenario`,
+    * `Background`,
+    * `Scenario Outline`
+    * `Rule`
+  * write ANYTHING / line NOT start with a keyword
+  * forms Markdown
+  * formatters -- _Example:_ official HTML formatter --
 
 ## Rule
 
+*TODO:
 The (optional) `Rule` keyword has been part of Gherkin since v6. 
 
 {{% note "Cucumber Support for Rule"%}}
@@ -204,6 +207,7 @@ Feature: Highlander
 
 ## Example
 
+* TODO:
 This is a *concrete example* that *illustrates* a business rule. It consists of
 a list of [steps](#steps).
 
