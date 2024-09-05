@@ -165,13 +165,13 @@ weight: 1
 
 # State management
 
-* TODO:
-A step definition can transfer state to a subsequent step definition by storing
-state in instance variables.
+* == store state | instance variables
+* allows
+  * transferring state from a step definition -- to a -- subsequent step definition 
 
 {{% block "javascript" %}}
-{{% warn "No arrow functions" %}}
-Please note that if you use arrow functions, you will have to create a variable representing state outside of the steps, in order to share state between steps!
+{{% warn "❌NO arrow functions❌" %}}
+* if you use arrow functions -> create a variable / represent state outside of the steps
 
 ```javascript
 let cukesState;
@@ -185,6 +185,7 @@ Given('I have {int} cukes in my belly', cukes => {
 
 # Scope
 
+* TODO:
 Step definitions aren't linked to a particular feature file or scenario.
 The file, class or package name of a step definition does not affect what Gherkin
 steps it will match. The only thing that matters is the step definition's
