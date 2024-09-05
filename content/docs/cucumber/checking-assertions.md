@@ -3,25 +3,22 @@ title: Checking Assertions
 subtitle: "How to determine success or failure"
 ---
 
-Your `Then` steps should make assertions comparing expected results to actual results
-from your application.
-
-Cucumber does not come with an assertion library. Instead, use the assertion methods
-from a unit testing tool.
+* assertions should be done | `Then` steps
+* Cucumber does NOT come with an assertion library
 
 # Java
 
 ## JUnit 5
 
-When using the [cucumber-junit-platform-engine](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine)
-you are free to use any assertion library of your choice. For example:
-
- * [AssertJ](https://assertj.github.io/doc/)
- * [Hamcrest](http://hamcrest.org/JavaHamcrest/)
- * [JUnit Jupiter](https://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions)
+* if you use [cucumber-junit-platform-engine](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine) -> choose any assertion library
+  * _Example:_
+    * [AssertJ](https://assertj.github.io/doc/)
+    * [Hamcrest](http://hamcrest.org/JavaHamcrest/)
+    * [JUnit Jupiter](https://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions)
 
 ## JUnit 4
 
+* TODO:
 When using JUnit 4 to run Cucumber we recommend using [JUnit 4](https://junit.org/junit4/)'s `assert*` methods.
 
 If you are using Maven, add the following to your `pom.xml`:
