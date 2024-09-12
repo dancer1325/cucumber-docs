@@ -9,19 +9,27 @@ polyglot:
 weight: 1350
 ---
 
-Cucumber is not an API automation tool, but it works well with other API automation tools.
-
-Using API's for your automation, can make your tests faster and less flaky than going through the UI.
-In general, API's change less frequently than the UI; keeping your automation up to date for longer.
+* Cucumber
+  * != API automation tool
+  * \+ API automation tools -- works well 
+* automate can be done via
+  * API's
+    * faster
+    * less flaky
+    * change less frequently
+  * UI
 
 # API Automation Tools for JVM
 
 ## RestAssured
-RestAssured is an API automation tool for Java.
+* == API automation tool for Java
+* check [official website](http://rest-assured.io/)
 
 {{% block "java,kotlin" %}}
-You can use RestAssured in your step definitions to make API calls and verify responses.
-For more information see the [official website](http://rest-assured.io/).
+* uses
+  * | step definitions for 
+    * making API calls
+    * verifying responses
 {{% /block %}}
 
 # API Automation Tools for JavaScript
