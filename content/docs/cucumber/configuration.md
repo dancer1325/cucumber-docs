@@ -16,11 +16,17 @@ polyglot:
 # Type Registry
 
 {{% block "java,kotlin,scala" %}}
-Parameter types let you convert parameters from cucumber-expressions to objects.
-Data table and doc string types let you convert data tables and doc
-strings to objects. Like step definitions, type definitions are part of the glue.
-When placed on the glue path Cucumber will detect them automatically. 
-{{% /block %}}
+* Parameter types
+  * allows
+    * cucumber-expressions' parameters -- are converted to -- objects
+* Data table and doc string types
+  * allows
+    * data tables and doc strings -- are converted to -- objects
+* type definitions -- are part of the -- glue
+  * if you place | glue path -> Cucumber -- will detect them --- automatically 
+          {{% /block %}}
+
+* TODO:
 
 {{% block "java,kotlin,scala" %}}
 For example, the following class registers a custom "Author" data table type:
