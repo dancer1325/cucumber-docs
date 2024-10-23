@@ -87,8 +87,10 @@ details about the available CucumberOptions, check the [code](https://github.com
 {{% /block %}}
 
 ## Cucumber says my steps are undefined, but I have implemented step definitions!
-If Cucumber is telling you that your steps are undefined, when you have defined step definitions, this means that Cucumber cannot *find* your step definitions.
-You'll need to make sure to specify the path to your step definitions (glue path) correctly.
+
+* == Cucumber can NOT *find* your step definitions
+* Attempt1:
+  * specify the path -- to -- your step definitions (glue path) correctly
 
 {{% block "java,kotlin" %}}
 By default Cucumber-JVM will search in the package (or sub-packages) of the runner class.
@@ -265,7 +267,7 @@ In this instance, you need to configure a new run configuration in IntelliJ IDEA
    
 If IntelliJ IDEA doesn't recognize the package with step definitions, you can specify it manually by entering the package name in the Glue field, for example _stepdefs_.
 
-For more information, please see [Run Cucumber Tests](https://www.jetbrains.com/help/idea/running-cucumber-tests.html) from JetBrains documentation.
+* [JetBrains documentation](https://www.jetbrains.com/help/idea/running-cucumber-tests.html)
 
 # How do I fix a Cucumber-JVM error where the stacktrace contains 'Failed to instantiate public cucumber.runtime.java.JavaBackend' or 'NoSuchMethodException'?
 
