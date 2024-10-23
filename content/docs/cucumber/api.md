@@ -1072,11 +1072,11 @@ It is possible to [configure](/docs/cucumber/configuration) how Cucumber should 
 ## From the command line
 
 {{% block "ruby" %}}
-The most common option is to run Cucumber from the command line. By default, Cucumber will treat anything ending in `.rb` under the root library directory as a step definition file.
-Thus, a step contained in `features/models/entities/step_definitions/anything.rb` can be used in a feature file contained in `features/views/entity_new`, provided that:
-
-- Cucumber is invoked on a root directory common to both (`./features`, in this example); OR
-- explicitly required on the command line
+* MOST common option -- to -- run Cucumber
+* 👀Anything / ending in `.rb` | root library directory -> Cucumber will treat -- as a -- step definition file 👀
+  * -> step | `features/models/entities/step_definitions/anything.rb` -- can be used -- in a feature file | `features/views/entity_new` /
+    * TODO: Cucumber is invoked on a root directory common to both (`./features`, in this example); OR
+    * explicitly required on the command line
 {{% /block %}}
 
 {{% block "javascript" %}}
