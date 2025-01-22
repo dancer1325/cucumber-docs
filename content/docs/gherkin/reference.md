@@ -516,7 +516,8 @@ delimiter, many tools like text editors don't (yet). {{% /note %}}
 
 ## Data Tables
 
-`Data Tables` are handy for passing a list of values to a step definition:
+* allows
+  * passing a list of values | 👀step definition's last argument 👀
 
 ```gherkin
 Given the following users exist:
@@ -525,7 +526,6 @@ Given the following users exist:
   | Julien | julien@cucumber.io | @jbpros         |
   | Matt   | matt@cucumber.io   | @mattwynne      |
 ```
-Just like `Doc Strings`, `Data Tables` will be passed to the step definition as the last argument.
 
 ### Table Cell Escaping
 
@@ -535,9 +535,7 @@ finally, if you need a `\`, you can escape that with `\\`.
 
 ### Data Table API
 
-Cucumber provides a rich API for manipulating tables from within step definitions.
-See the [Data Table API reference](https://github.com/cucumber/cucumber-jvm/tree/main/datatable) reference for
-more details.
+* see [Data Table API reference](https://github.com/cucumber/cucumber-jvm/tree/main/datatable)
 
 # Spoken Languages
 
