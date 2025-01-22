@@ -4,11 +4,14 @@ subtitle: Random selection of BDD/Cucumber blog posts
 weight: 20
 ---
 
-Here is a list of Cucumber-related blog posts and tutorials.
+* list of Cucumber-related
+  * blog posts
+  * tutorials
 
-Do keep in mind that blogs can become dated quickly with a fast-moving project like Cucumber. Cucumber's documentation should be considered the canonical documentation source with the, hopefully, most up-to-date information. Some very old blog posts may refer to the "RSpec Story Runner", since Cucumber started out as a rewrite of that project.
+* Cucumber's documentation
+  * == canonical documentation source 
 
-See also [Related Tools](/docs/tools/related-tools).
+* see ALSO [Related Tools](../tools/related-tools)
 
 |                                                                                                                                                                                                                                                                        |                                                                                                                                                       |                     |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------|
@@ -42,7 +45,7 @@ See also [Related Tools](/docs/tools/related-tools).
 | [Cucumber Regular Expressions Cheat Sheet](https://agileforall.com/cucumber-regular-expressions-cheat-sheet/)                                                                                                                                       | Richard Lawrence on the important bits of regular expressions for Cucumber users                                                                      | August 23, 2011     |
 | [Getting Started with Ruby, Cucumber, and Capybara on Windows](https://agileforall.com/getting-started-with-ruby-cucumber-and-capybara-on-windows/)                                                                                                 | Richard Lawrence on how to use Cucumber and Capybara on Windows (without Rails)                                                                       | August 20, 2011     |
 | [Composable Features](https://pages.andrew.premdas.org/2011/06/27/composable-features.html)                                                                                                                                                                             | Andrew Premdas talks about applying the composed method technique to features                                                                         | June 27, 2011       |
-| [Composable Features and Tables](https://pages.andrew.premdas.org/2011/06/27/composable-features-and-tables.html)                                                                                                                                                       | Andrew Premdas talks about the problems with tables, and why he thinks any table in a cucumber feature is probably a smell!                           | June 27, 2011       |
+| [Composable Features and Tables](https://pages.andrew.premdas.org/2011/06/27/composable-features-and-tables.html)                                                                                                                                                       | cucumber feature -- via table -- is probably a smell!                           | June 27, 2011       |
 | [Automate your Feature and Acceptance Tests in Four Easy Steps](https://blog.houseofsoft.org/2011/04/05/automate-your-feature-tests)                                                                                                                                    | [Dmitriy "DK" Korobskiy](https://about.me/d.k) on how to get started with Cucumber, Watir, Watir-WebDriver and Hudson/Jenkins                          | April 5, 2011       |
 | [Cucumber + Cuke4Duke + Selenium (WebDriver) = Enlightenment](https://terminalvelocity-socal.blogspot.com/2010/11/cucumber-cuke4duke-selenium-webdriver.html)                                                                                                           | Nice little intro to Cuke4Duke                                                                                                                        | November 30, 2010   |
 | [@cheezy UI Tests series part IV](http://www.cheezyworld.com/2010/11/21/ui-tests-default-dat/)                                                                                                                                                                         | Default Data                                                                                                                                          | November 21, 2010   |
