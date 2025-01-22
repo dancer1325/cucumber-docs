@@ -23,78 +23,74 @@ The number of parameters in the {{% stepdef-body %}} has to match the number of 
 
 ## Data Tables
 
-Data tables from Gherkin can be accessed by using the DataTable object as the last parameter in a step definition.
-This conversion can be done either by Cucumber or manually.
+* requirements
+  * 👀use the DataTable object -- as the -- last parameter | step definition 👀
 
-{{% text "java,kotlin" %}}Depending on the table shape as one of the following collections:{{% /text %}}
+* allows
+  * passing a list of strings | step definition
 
-```java
-List<List<String>> table
-List<Map<String, String>> table
-Map<String, String> table
-Map<String, List<String>> table
-Map<String, Map<String, String>> table
-```
+* | {{% text "java,kotlin,scala" %}}
+  * based on the table shape -> ALLOWED collections
 
-The simplest way to pass a {{% text "java,kotlin" %}}`List<String>`{{% /text %}}{{% text "scala"
-%}}`java.util.List[String]`{{% /text %}}{{% text "ruby,javascript" %}}list of strings{{% /text %}} to a step definition
-is to use a data table:
+    ```java
+    List<List<String>> table
+    List<Map<String, String>> table
+    Map<String, String> table
+    Map<String, List<String>> table
+    Map<String, Map<String, String>> table
+    ```
+  
+  * _Example:_  
+    
+  ```gherkin
+    Given the following animals:
+      | cow   |
+      | horse |
+      | sheep |
+  ```
 
-```gherkin
-Given the following animals:
-  | cow   |
-  | horse |
-  | sheep |
-```
+    ```java
+    @Given("the following animals:")
+    public void the_following_animals(List<String> animals) { // declare as List<String> 
+    }
+    ```
+  ```kotlin
+  @Given("the following animals:")
+  fun the_following_animals(animals: List<String>) {    // declare as List<String>
+  }
+  ```
+  ```scala
+  Given("the following animals:") { animals: java.util.List[String] => // declare as java.util.List[String]
+  }
+  ```
 
-Declare the argument as a {{% text "java,kotlin" %}}`List<String>`{{% /text %}}{{% text "scala" %}}`java.util.List[String]`{{% /text %}}{{% text "ruby,javascript" %}}list of strings{{% /text %}}, but don't define any {{% expression-parameter %}}s in the expression:
+    * `DataTable` -- is automatically flattened, via `DataTable.asList(String.class)` -- to a
+      * | {{% text "java,kotlin" %}}`
+        * `List<String>`
+      * | {{% text "scala" %}}
+        * `java.util.List[String]`
+      * | {{% text "ruby,javascript" %}}
+        * array of strings
 
-{{% block "java" %}}
-Annotated method style:
+* | {{% block "scala" %}},
+  * NOT support -- using -- Scala collection types ❌
+    * see [Github](https://github.com/cucumber/cucumber-jvm-scala/issues/50)
 
-```java
-@Given("the following animals:")
-public void the_following_animals(List<String> animals) {
-}
-```
-{{% /block %}}
+* | {{% text "javascript" %}}
+  * _Example:_ [here](https://github.com/cucumber/cucumber-js/blob/master/src/models/data_table.ts)
 
-{{% block "kotlin" %}}
-Annotated method style:
-
-```kotlin
-@Given("the following animals:")
-fun the_following_animals(animals: List<String>) {
-}
-```
-{{% /block %}}
-
-{{% block "scala" %}}
-
-```scala
-Given("the following animals:") { animals: java.util.List[String] =>
-}
-```
-{{% /block %}}
-
-In this case, the `DataTable` is automatically flattened to a {{% text "java,kotlin" %}}`List<String>`{{% /text %}}{{% text "scala" %}}`java.util.List[String]`{{% /text %}}{{% text "ruby,javascript" %}}array of strings{{% /text %}}
-by Cucumber (using `DataTable.asList(String.class)`) before invoking the step definition.
-
-{{% text "java,kotlin" %}}Note: In addition to collections of String, Integer, Float, BigInteger and BigDecimal, Byte,
-Short, Long and Double are also supported.{{% /text %}}
-
-{{% block "scala" %}}
-
-**Note:** For now, Cucumber Scala does not support using Scala collection types.
-
-See [Github](https://github.com/cucumber/cucumber-jvm-scala/issues/50)
-
-{{% /block %}}
-
-{{% text "javascript" %}} For an example of data tables in JavaScript, go [here](https://github.com/cucumber/cucumber-js/blob/master/src/models/data_table.ts) {{% /text %}}
-
-{{% text "java,kotlin" %}}In addition, see
-[cucumber-jvm data-tables](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-java#data-tables){{% /text %}}
+* | {{% text "java,kotlin" %}}
+  * support collections of
+    * String,
+    * Integer,
+    * Float,
+    * BigInteger
+    * BigDecimal,
+    * Byte,
+    * Short,
+    * Long
+    * Double
+  * see [cucumber-jvm data-tables](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-java#data-tables){{% /text %}}
 
 # Steps
 
